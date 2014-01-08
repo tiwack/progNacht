@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Change Widget Type" description="Change Widget Type" file="/GeoMessaging/res/layout/activity_main.xml" flags="6" id="com.android.ide.eclipse.adt.refactoring.changeview" proj="/GeoMessaging" sel-end="1848" sel-start="1570" stamp="1389204611023" type="android.widget.ImageButton"/>
+</session>
