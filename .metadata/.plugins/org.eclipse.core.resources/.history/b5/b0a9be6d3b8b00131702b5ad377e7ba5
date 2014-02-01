@@ -1,0 +1,67 @@
+package com.example.geomessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.eclipsesource.json.*;
+
+
+public class MainActivity extends Activity {
+	private Button button_senden;
+	private Button button_aktualisieren;
+	private EditText eingabe;
+	private TextView text;
+	private String jsonString = " {'nachrichten'[{'msg':'lol'}{'msg':'keks'}]}";
+	private String jsonString2 = "{ 'test':'keks'}";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		//buttons felder etc holen
+		button_senden = (Button)findViewById(R.id.button2);
+		button_aktualisieren= (Button)findViewById(R.id.button1);
+		eingabe = (EditText)findViewById(R.id.editText1);
+		text = (TextView)findViewById(R.id.textView1);
+		Log.i("bla", "bsdfslub");
+		
+		button_senden.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				try {
+					JSONObject j = new JSONObject(jsonString2);
+					System.out.println(j.get("test"));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					System.out.println("fail");
+					e.printStackTrace();
+				}
+				
+				
+		}}
+				
+		);
+		
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

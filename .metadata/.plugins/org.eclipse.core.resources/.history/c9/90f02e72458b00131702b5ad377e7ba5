@@ -1,0 +1,10 @@
+package com.example.geomessaging;
+
+public class Nachricht {
+	private int id;
+	private String name;
+	private String date;
+	private double longi;
+	private double lati;
+	private String msg;
+}

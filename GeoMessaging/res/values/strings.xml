@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="refresh_button">Aktualisieren</string>
     <string name="send_button">Senden</string>
-    <string name="range_spinner">Entfernung</string>
+    <string name="user">Benutzer</string>
+    <string name="range">Reichweite</string>
+    <string name="title_activity_user">UserActivity</string>
 
 </resources>

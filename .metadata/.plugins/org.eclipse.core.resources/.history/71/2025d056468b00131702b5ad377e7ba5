@@ -1,0 +1,81 @@
+package com.example.geomessaging;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import java.util.LinkedList;
+
+import com.eclipsesource.json.*;
+
+
+public class MainActivity extends Activity {
+	private Button button_senden;
+	private Button button_aktualisieren;
+	private EditText eingabe;
+	private TextView text;
+	private String jsonString = "{nachrichten:[{'id': 4,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Alles toll'},{'id': 3,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'schoene neue Welt'},{'id': 2,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Per Anhalter durch die Galaxis'},{'id': 1,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': '1984'}]}";
+
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		//buttons felder etc holen
+		button_senden = (Button)findViewById(R.id.button2);
+		button_aktualisieren= (Button)findViewById(R.id.button1);
+		eingabe = (EditText)findViewById(R.id.editText1);
+		text = (TextView)findViewById(R.id.textView1);
+		Log.i("Button einlesen", "done");
+		
+		button_senden.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String ausgabe = "";
+				JSONObject dummy = new JSONObject();
+				LinkedList<Nachricht> nachrichten = new LinkedList();
+				try {
+					JSONObject j = new JSONObject(jsonString);
+					Log.i("object eingelesen", j.toString());
+					JSONArray ja = j.getJSONArray("nachrichten");
+					Log.i("array eingelesen", ja.toString());
+					for(int i = 0; i < 10; i++){
+						Log.i("ausgabe", ausgabe);
+						dummy = ja.getJSONObject(i);
+						nachrichten.add(new Nachricht());
+						
+					}
+					
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					Log.i("catchblock", "json");
+					e.printStackTrace();
+				}
+				text.setText(ausgabe);
+				
+		}}
+				
+		);
+		
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
