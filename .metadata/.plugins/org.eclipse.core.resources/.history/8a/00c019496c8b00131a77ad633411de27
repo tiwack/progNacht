@@ -51,16 +51,12 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-	
+		//aktualisierenbutton json etc
 		button_aktualisieren.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				text.setText(Nachrichten.getNachrichten());
+			public void onClick(View v) {}
 				
-			}
-			
-			
-		});
+		);
 		
 		
 		
