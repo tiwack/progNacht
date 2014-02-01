@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import java.util.LinkedList;
 
 
 public class MainActivity extends Activity {
-	private Button user;
+	private Button button_user;
 	private Button button_senden;
 	private Button button_aktualisieren;
 	private EditText eingabe;
@@ -37,9 +38,19 @@ public class MainActivity extends Activity {
 		button_aktualisieren= (Button)findViewById(R.id.button1);
 		eingabe = (EditText)findViewById(R.id.editText1);
 		text = (TextView)findViewById(R.id.textView1);
-		user = (Button)findViewById(R.id.button3);
+		button_user = (Button)findViewById(R.id.button3);
 		Log.i("Button einlesen", "done");
 		
+		//auf User Seite kommen
+		button_user.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent geheZurUserSeite = new Intent(MainActivity.this, LoginActivity.class);
+				startActivity(geheZurUserSeite);
+				
+			}
+		});
 		
 		//aktualisierenbutton json etc
 		button_aktualisieren.setOnClickListener(new OnClickListener() {
