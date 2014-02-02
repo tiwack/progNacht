@@ -50,6 +50,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
         public static final int login=0x7f05000b;
+        public static final int login_text=0x7f05000d;
         public static final int mail=0x7f050009;
         public static final int password=0x7f05000a;
         public static final int range=0x7f050006;

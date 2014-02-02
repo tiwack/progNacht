@@ -1,1 +1,33 @@
-{nachrichten:[{'id': 4,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Alles toll'},{'id': 3,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'schoene neue Welt'},{'id': 2,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Per Anhalter durch die Galaxis'},{'id': 1,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': '1984'}]}
+{
+    nachrichten:[
+                 {
+                 'id': 4,'name': 'Hugo',
+                 'lat': 47.66741,
+                 'long': 9.168935,
+                 'date':'10.09.2014 - 10:10',
+                 'msg': 'Alles toll'
+                 },
+                 {
+                 'id': 3,'name': 'Hugo',
+                 'lat': 47.66741,
+                 'long': 9.168935,
+                 'date':'10.09.2014 - 10:10',
+                 'msg': 'schoene neue Welt'
+                 },
+                 {
+                 'id': 2,
+                 'name': 'Hugo',
+                 'lat': 47.66741,
+                 'long': 9.168935,
+                 'date':'10.09.2014 - 10:10',
+                 'msg': 'Per Anhalter durch die Galaxis'
+                 },
+                 {'id': 1,
+                 'name': 'Hugo',
+                 'lat': 47.66741,
+                 'long': 9.168935,
+                 'date':'10.09.2014 - 10:10',
+                 'msg': '1984'
+                 }
+                 ]
+}

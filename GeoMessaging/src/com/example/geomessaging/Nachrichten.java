@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class Nachrichten {
-	private static String jsonString = "{nachrichten:[{'id': 4,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Alles toll'},{'id': 3,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'schoene neue Welt'},{'id': 2,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': 'Per Anhalter durch die Galaxis'},{'id': 1,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'time':'10.09.2014 - 10:10','msg': '1984'}]}";
+	private static String jsonString = "{nachrichten:[{'id': 4,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'date':'10.09.2014 - 10:10','msg': 'Alles toll'},{'id': 3,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'date':'10.09.2014 - 10:10','msg': 'schoene neue Welt'},{'id': 2,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'date':'10.09.2014 - 10:10','msg': 'Per Anhalter durch die Galaxis'},{'id': 1,'name': 'Hugo','lat': 47.66741,'long': 9.168935,'date':'10.09.2014 - 10:10','msg': '1984'}]}";
 
 	public static String getNachrichten(){
 
@@ -24,7 +24,7 @@ public class Nachrichten {
 			for(int i = 0; i < 10; i++){
 				Log.i("ausgabe", ausgabe);
 				dummy = jsonArray.getJSONObject(i);
-				nachrichten.add(new Nachricht(dummy.getInt("id"),dummy.getString("name"), dummy.getString("time"),dummy.getDouble("long"),dummy.getDouble("lat"),dummy.getString("msg")));
+				nachrichten.add(new Nachricht(dummy.getInt("id"),dummy.getString("name"), dummy.getString("date"),dummy.getDouble("long"),dummy.getDouble("lat"),dummy.getString("msg")));
 			}
 			
 			
@@ -34,14 +34,22 @@ public class Nachrichten {
 			e.printStackTrace();
 		}
 		for(Nachricht n : nachrichten){
+			//sortieren nach Entfernung
+			double lati = n.getLati();
+			double longi = n.getLongi();
+			
+			
+			
+			//alle relevanten Nachrichten ranhaengen
 			ausgabe += n.toString();
-		//Log.i("ausgaben string", ausgabe);
+
 		}
 		
 		return ausgabe;
 		
 }
-	
-	}
+
+}
+
 
 

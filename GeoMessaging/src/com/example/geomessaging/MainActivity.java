@@ -40,18 +40,28 @@ public class MainActivity extends Activity {
 		button_user = (Button)findViewById(R.id.button3);
 		Log.i("Button einlesen", "done");
 		
-		//auf User Seite kommen
+
+		
+		//auf User Seite kommen bzw logout
+		if(User.getMail() != null){
+			button_user.setText("Logout");
+		}
 		button_user.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent geheZurUserSeite = new Intent(MainActivity.this, LoginActivity.class);
-				startActivity(geheZurUserSeite);
+				if(User.getMail() == null){
+					Intent geheZurUserSeite = new Intent(MainActivity.this, LoginActivity.class);
+					startActivity(geheZurUserSeite);
+				}else{
+					button_user.setText("Benutzer");
+					User.deleteMail();
+				}
 				
 			}
 		});
 		
-	
+		//neue Nachrichten holen
 		button_aktualisieren.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -62,7 +72,21 @@ public class MainActivity extends Activity {
 			
 		});
 		
+		//Nachricht senden
 		
+			button_senden.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					if(User.getMail() != null){
+						
+					}else{
+						Intent geheZurUserSeite = new Intent(MainActivity.this, LoginActivity.class);
+						startActivity(geheZurUserSeite);
+					}
+					
+				}
+			});
 		
 	}
 

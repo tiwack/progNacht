@@ -4,8 +4,6 @@
 <fullyQualifiedTypeName name="com.example.geomessaging.MainActivity"/>
 <fullyQualifiedTypeName name="android.widget.EditText"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
-<fullyQualifiedTypeName name="com.example.geomessaging.R.id"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="com.eclipsesource.json.JsonValue"/>
 <fullyQualifiedTypeName name="com.eclipsesource.json.JsonArray"/>
@@ -17,4 +15,9 @@
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.HashAndSalt"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.R.id"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.User"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.Nachrichten"/>
 </qualifiedTypeNameHistroy>

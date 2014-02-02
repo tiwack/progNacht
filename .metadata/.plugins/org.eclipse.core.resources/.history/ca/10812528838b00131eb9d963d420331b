@@ -1,0 +1,14 @@
+package com.example.geomessaging;
+
+public class User {
+	public static boolean login(String name, String password){
+		String hash = HashAndSalt.md5(password);
+			
+		return true;
+		
+	}
+	public static boolean register(String name, String password){
+		String hash = HashAndSalt.md5(password);
+		return true;
+	}
+}
