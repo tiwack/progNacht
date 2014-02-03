@@ -18,53 +18,56 @@ public class LoginActivity extends Activity {
 	private Button login;
 	private Button register;
 	private TextView errorField;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		loginMail = (EditText)findViewById(R.id.editText1);
-		loginPassword = (EditText)findViewById(R.id.editText2);
-		regMail = (EditText)findViewById(R.id.editText3);
-		regPassword = (EditText)findViewById(R.id.editText4);
-		errorField = (TextView)findViewById(R.id.textView1);
-		login = (Button)findViewById(R.id.button1);
-		register = (Button)findViewById(R.id.button2);
-		
-		
-		//einloggen
+
+		errorField = (TextView) findViewById(R.id.textView1);
+		login = (Button) findViewById(R.id.button1);
+		register = (Button) findViewById(R.id.button2);
+
+		// einloggen
 		login.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				if(User.login(loginMail.getText().toString(), loginPassword.getText().toString())){
-					Intent geheZurMainSeite = new Intent(LoginActivity.this, MainActivity.class);
+				loginMail = (EditText) findViewById(R.id.editText1);
+				loginPassword = (EditText) findViewById(R.id.editText2);
+				if (User.login(loginMail.getText().toString(), loginPassword
+						.getText().toString())) {
+					Intent geheZurMainSeite = new Intent(LoginActivity.this,
+							MainActivity.class);
 					startActivity(geheZurMainSeite);
-				}else{
+				} else {
 					errorField.setText("Login Ungültig");
 				}
-				
+
 			}
 		});
 		register.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				if(User.regexMail(regMail.toString())){
-					if(User.register(regMail.toString(), regPassword.toString())){
-						Intent geheZurMainSeite = new Intent(LoginActivity.this, MainActivity.class);
+				regMail = (EditText) findViewById(R.id.editText3);
+				regPassword = (EditText) findViewById(R.id.editText4);
+				if (User.checkRegexMail(regMail.getText().toString())) {
+					if (User.register(regMail.getText().toString(), regPassword
+							.getText().toString())) {
+						Intent geheZurMainSeite = new Intent(
+								LoginActivity.this, MainActivity.class);
 						startActivity(geheZurMainSeite);
-					}else{
-						errorField.setText("Registrierung Fehlgeschlagen");
+					} else {
+						errorField.setText("Registrierung fehlgeschlagen");
 					}
-				}else{
+				} else {
 					errorField.setText("E-Mail Adresse ist ungültig");
 				}
-				
+
 			}
 		});
 	}
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

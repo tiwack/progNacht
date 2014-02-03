@@ -7,7 +7,7 @@ public class Nachricht {
 	private double longi;
 	private double lati;
 	private String msg;
-	
+
 	public Nachricht(int id, String name, String date, double longi,
 			double lati, String msg) {
 		super();
@@ -67,11 +67,9 @@ public class Nachricht {
 		this.msg = msg;
 	}
 
-	@Override
+	// definiert wie jede einzelne Nachricht auf dem Device aussieht
 	public String toString() {
-		return  name + " " + date
-				+ "\n " + msg + "\n\n";
+		return name + " " + date + "\n " + msg + "\n\n";
 	}
-	
-	
+
 }

@@ -1,0 +1,58 @@
+package com.example.geomessaging;
+
+import java.io.IOException;
+import java.util.LinkedList;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
+
+public class Nachrichten {
+	//String zum testen
+	private static String jsonUrl = "http://localhost/beispiel.json";
+	public static String getNachrichten(){
+
+		String ausgabe = "";
+		JSONObject dummy = new JSONObject();
+		LinkedList<Nachricht> nachrichten = new LinkedList();
+		try {
+			JSONObject jsonObject = JsonReader.readJsonFromUrl(jsonUrl);
+			Log.i("object eingelesen", jsonObject.toString());
+			JSONArray jsonArray = jsonObject.getJSONArray("nachrichten");
+			Log.i("array eingelesen", jsonArray.toString());
+			for(int i = 0; i < 10; i++){
+				Log.i("ausgabe", ausgabe);
+				dummy = jsonArray.getJSONObject(i);
+				//packt die Werte aus Json in ein Listeonjekt
+				nachrichten.add(new Nachricht(dummy.getInt("id"),dummy.getString("name"), dummy.getString("date"),dummy.getDouble("long"),dummy.getDouble("lat"),dummy.getString("msg")));
+			}
+			
+			
+		} catch (Exception e) {
+		//bei weniger als 10 Nachrichten laeuft er ueber den Catchblock raus.
+			Log.i("catchblock", "json");
+			e.printStackTrace();
+		}
+		for(Nachricht n : nachrichten){
+			//sortieren nach Entfernung
+			double lati = n.getLati();
+			double longi = n.getLongi();
+			
+			
+			
+			//alle relevanten Nachrichten ranhaengen
+			ausgabe += n.toString();
+
+		}
+		
+		return ausgabe;
+		
+}
+
+}
+
+
+
