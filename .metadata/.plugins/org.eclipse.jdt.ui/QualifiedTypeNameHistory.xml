@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.lang.StackTraceElement"/>
 <fullyQualifiedTypeName name="com.eclipsesource.json.JsonObject"/>
-<fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -20,4 +19,14 @@
 <fullyQualifiedTypeName name="com.example.geomessaging.User"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="com.example.geomessaging.Nachrichten"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.JsonReader"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="org.json.JSONException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="android.os.StrictMode"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="android.text.format.DateFormat"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+<fullyQualifiedTypeName name="com.example.geomessaging.WebServerKommunikation"/>
 </qualifiedTypeNameHistroy>

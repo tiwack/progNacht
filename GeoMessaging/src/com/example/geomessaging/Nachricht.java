@@ -1,17 +1,15 @@
 package com.example.geomessaging;
 
 public class Nachricht {
-	private int id;
 	private String name;
 	private String date;
 	private double longi;
 	private double lati;
 	private String msg;
 
-	public Nachricht(int id, String name, String date, double longi,
+	public Nachricht( String name, String date, double longi,
 			double lati, String msg) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.longi = longi;
@@ -19,13 +17,9 @@ public class Nachricht {
 		this.msg = msg;
 	}
 
-	public int getId() {
-		return id;
-	}
+	
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public String getName() {
 		return name;

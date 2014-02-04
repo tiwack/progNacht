@@ -1,10 +1,26 @@
 package com.example.geomessaging;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +39,7 @@ public class MainActivity extends Activity {
 	private Button button_aktualisieren;
 	private EditText eingabe;
 	private TextView text;
-	DateFormat dateFormat = new SimpleDateFormat( "dd.MM.yyyy - hh:mm");
+	DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - hh:mm");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,19 +99,50 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				if (User.getMail() != null) {
 					eingabe = (EditText) findViewById(R.id.editText1);
-					GregorianCalendar cal =new GregorianCalendar();
+					GregorianCalendar cal = new GregorianCalendar();
 					Log.i("Gregorian Calender", cal.toString());
 					try {
-					JSONObject json = new JSONObject();	
-					json.put("name",User.getMail());
-					json.put("date", dateFormat.format(cal.getTime()));
-					json.put("msg",eingabe.getText().toString());
-					Log.i("Senden Jsonobjekt", json.toString());
+						JSONObject json = new JSONObject();
+						json.put("name", User.getMail());
+						json.put("date", dateFormat.format(cal.getTime()));
+						json.put("msg", eingabe.getText().toString());
+						json.put("lat", "234.234");
+						json.put("long", "123.34");
+						Log.i("Senden Jsonobjekt", json.toString());
+						HttpClient httpClient = new DefaultHttpClient();
+						HttpPost httpPost = new HttpPost(WebServerKommunikation.SERVER + "getJson.php");
+						// Request parameters and other properties.
+						List<NameValuePair> params = new ArrayList<NameValuePair>();
+						params.add(new BasicNameValuePair("json", json.toString()));
+						try {
+						    httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+						} catch (UnsupportedEncodingException e) {
+						    // writing error to Log
+						    e.printStackTrace();
+						}
+						/*
+						 * Making HTTP Request
+						 */
+						try {
+						    HttpResponse response = httpClient.execute(httpPost);
+						    HttpEntity respEntity = response.getEntity();
+						   
+						    if (respEntity != null) {
+						        // EntityUtils to get the reponse content
+						        String content =  EntityUtils.toString(respEntity);
+						        Log.i("RESPONSE", content);
+						    }
+						} catch (ClientProtocolException e) {
+						    // writing exception to log
+						    e.printStackTrace();
+						} catch (IOException e) {
+						    // writing exception to log
+						    e.printStackTrace();
+						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
 
 				} else {
 					Intent geheZurUserSeite = new Intent(MainActivity.this,

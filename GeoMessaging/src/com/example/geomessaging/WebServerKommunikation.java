@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class WebServerKommunikation {
-	final private static String SERVER = "http://10.0.2.2:8080/";
+	final public static String SERVER = "http://10.0.2.2:8080/";
 
 	private static String readAll(Reader rd) throws IOException {
 		StringBuilder sb = new StringBuilder();

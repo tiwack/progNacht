@@ -1,6 +1,7 @@
 package com.example.geomessaging;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.json.JSONArray;
@@ -27,7 +28,7 @@ public class Nachrichten {
 				Log.i("ausgabe", ausgabe);
 				dummy = jsonArray.getJSONObject(i);
 				// packt die Werte aus Json in ein Listeonjekt
-				nachrichten.add(new Nachricht(dummy.getInt("id"), dummy
+				nachrichten.add(new Nachricht(dummy
 						.getString("name"), dummy.getString("date"), dummy
 						.getDouble("long"), dummy.getDouble("lat"), dummy
 						.getString("msg")));
@@ -42,7 +43,10 @@ public class Nachrichten {
 			Log.i("catchblock", "json");
 			e.printStackTrace();
 		}
-		for (Nachricht n : nachrichten) {
+		Iterator iterator;
+		iterator = nachrichten.descendingIterator();
+		while (iterator.hasNext()) {
+			Nachricht n = (Nachricht)iterator.next();
 			// sortieren nach Entfernung
 			double lati = n.getLati();
 			double longi = n.getLongi();
