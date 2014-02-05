@@ -24,21 +24,21 @@ public class Nachrichten {
 			Log.i("object eingelesen", jsonObject.toString());
 			JSONArray jsonArray = jsonObject.getJSONArray("nachrichten");
 			Log.i("array eingelesen", jsonArray.toString());
-			for (int i = 0;; i++) {
+			for (int i = 0; i < 10; i++) {
 				Log.i("ausgabe", ausgabe);
 				dummy = jsonArray.getJSONObject(i);
 				// packt die Werte aus Json in ein Listeonjekt
-				nachrichten.add(new Nachricht(dummy.getString("name"), dummy
-						.getString("date"), dummy.getDouble("long"), dummy
-						.getDouble("lat"), dummy.getString("msg")));
+				nachrichten.add(new Nachricht(dummy
+						.getString("name"), dummy.getString("date"), dummy
+						.getDouble("long"), dummy.getDouble("lat"), dummy
+						.getString("msg")));
 			}
 
 		} catch (IOException e) {
 			Log.i("catchblock", "IOEXEPTION");
 			e.printStackTrace();
 		} catch (JSONException e) {
-			// wenn alle Nachrichten eingelesen sind laeuft er ueber den
-			// Catchblock
+			// bei weniger als 10 Nachrichten laeuft er ueber den Catchblock
 			// raus.
 			Log.i("catchblock", "json");
 			e.printStackTrace();
@@ -46,7 +46,7 @@ public class Nachrichten {
 		Iterator iterator;
 		iterator = nachrichten.descendingIterator();
 		while (iterator.hasNext()) {
-			Nachricht n = (Nachricht) iterator.next();
+			Nachricht n = (Nachricht)iterator.next();
 			// sortieren nach Entfernung
 			double lati = n.getLati();
 			double longi = n.getLongi();
