@@ -59,9 +59,7 @@ public class MainActivity extends Activity {
 		text = (TextView) findViewById(R.id.textView1);
 		button_user = (Button) findViewById(R.id.button3);
 		Log.i("Button einlesen", "done");
-		
-		
-		text.setText(Nachrichten.getNachrichten());
+
 		// auf User Seite kommen bzw logout anzeigen wenn eingeloggt
 		if (User.getMail() != null) {
 			button_user.setText("Logout");
@@ -135,7 +133,6 @@ public class MainActivity extends Activity {
 						        String content =  EntityUtils.toString(respEntity);
 						        Log.i("RESPONSE", content);
 						    }
-						    text.setText(Nachrichten.getNachrichten());
 						} catch (ClientProtocolException e) {
 						    // writing exception to log
 						    e.printStackTrace();
