@@ -56,14 +56,57 @@ public class WebServerKommunikation {
 		}
 	}
 
+	public static boolean doGetAnfragen(String email, String password,
+			String direktive) {
+		String hash = HashAndSalt.createMd5(password);
+		Log.i("Mail:", email);
+		Log.i("Password:", password);
+		Log.i("Hash:", hash);
+		String link = SERVER + direktive + "?mail=" + email + "&password="
+				+ hash;
+		InputStream is = null;
+		String result = null;
+		StringBuilder sb = null;
+		try {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpGet httpget = new HttpGet(link);
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Log.i("HTTP Request CATCHBLOCK", "fail");
+			e.printStackTrace();
+		}
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					is, "utf-8"), 8);
+			sb = new StringBuilder();
+			sb.append(reader.readLine() + "\n");
+			String line = "0";
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result = sb.toString();
+			Log.i("HTTP Response", result);
+			if (result.contains("e")) {
+
+				return true;
+			}
+		} catch (Exception e) {
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+		return false;
+	}
 	public static boolean doPostAnfragen(String email, String password,
 			String direktive){
 		String hash = HashAndSalt.createMd5(password);
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(WebServerKommunikation.SERVER + direktive);
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("mail", email));
-		params.add(new BasicNameValuePair("password", hash));
+		params.add(new BasicNameValuePair("email", email));
+		params.add(new BasicNameValuePair("hash", hash));
 		try {
 		    httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
