@@ -137,7 +137,6 @@ public class MainActivity extends Activity {
 						        String content =  EntityUtils.toString(respEntity);
 						        Log.i("RESPONSE", content);
 						    }
-						    eingabe.setText("");
 						    text.setText(Nachrichten.getNachrichten());
 						} catch (ClientProtocolException e) {
 						    // writing exception to log

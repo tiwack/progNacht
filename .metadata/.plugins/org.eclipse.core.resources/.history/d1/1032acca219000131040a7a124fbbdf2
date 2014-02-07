@@ -15,7 +15,6 @@
         android:layout_above="@+id/editText1"
         android:layout_alignLeft="@+id/editText1"
         android:text="@string/hello_world" />
-		android:scrollbars = "vertical"
 
     <Button
         android:id="@+id/button1"

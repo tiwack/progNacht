@@ -25,7 +25,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -60,7 +59,6 @@ public class MainActivity extends Activity {
 		text = (TextView) findViewById(R.id.textView1);
 		button_user = (Button) findViewById(R.id.button3);
 		Log.i("Button einlesen", "done");
-		text.setMovementMethod(new ScrollingMovementMethod());
 		
 		
 		text.setText(Nachrichten.getNachrichten());
@@ -137,7 +135,6 @@ public class MainActivity extends Activity {
 						        String content =  EntityUtils.toString(respEntity);
 						        Log.i("RESPONSE", content);
 						    }
-						    eingabe.setText("");
 						    text.setText(Nachrichten.getNachrichten());
 						} catch (ClientProtocolException e) {
 						    // writing exception to log

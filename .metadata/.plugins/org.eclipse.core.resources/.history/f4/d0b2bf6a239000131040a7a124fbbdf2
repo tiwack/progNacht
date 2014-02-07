@@ -15,6 +15,7 @@
         android:layout_above="@+id/editText1"
         android:layout_alignLeft="@+id/editText1"
         android:text="@string/hello_world" />
+	    android:maxLines = "AN_INTEGER"
 		android:scrollbars = "vertical"
 
     <Button
