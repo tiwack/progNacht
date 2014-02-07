@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
 	private Button button_aktualisieren;
 	private EditText eingabe;
 	private TextView text;
+	private Spinner range;
 	DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - hh:mm");
 
 	@Override
@@ -61,6 +63,9 @@ public class MainActivity extends Activity {
 		button_user = (Button) findViewById(R.id.button3);
 		Log.i("Button einlesen", "done");
 		text.setMovementMethod(new ScrollingMovementMethod());
+		range = (Spinner) findViewById(R.id.spinner1);
+		
+		
 		
 		
 		text.setText(Nachrichten.getNachrichten());
@@ -88,9 +93,16 @@ public class MainActivity extends Activity {
 		button_aktualisieren.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.i("Nachricht", "aufruf von GetNachricht");
+				int reichweiteZahl;
+				String reichweite = range.getSelectedItem().toString();
+				if(reichweite.equals("alles")){
+				reichweiteZahl = 40000;
+				}else{
+				reichweiteZahl = Integer.parseInt(reichweite);
 				text.setText(Nachrichten.getNachrichten());
-
+				}
+				Log.i("Nachricht aufruf mit range", reichweite);
+				text.setText(Nachrichten.getNachrichten());
 			}
 
 		});

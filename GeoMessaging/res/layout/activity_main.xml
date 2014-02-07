@@ -15,7 +15,7 @@
         android:layout_above="@+id/editText1"
         android:layout_alignLeft="@+id/editText1"
         android:text="@string/hello_world" />
-		android:scrollbars = "vertical"
+	
 
     <Button
         android:id="@+id/button1"
@@ -55,14 +55,24 @@
         android:layout_toRightOf="@+id/button1"
         android:text="@string/user" />
 
-    <Button
-        android:id="@+id/button4"
-        style="?android:attr/buttonStyleSmall"
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button2"
+        android:layout_alignBottom="@+id/button3"
         android:layout_alignTop="@+id/button3"
+        android:layout_toRightOf="@+id/textView2"
+        android:entries="@array/ranges"
+        android:prompt="@string/range" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
         android:layout_toRightOf="@+id/button3"
-        android:text="@string/range" />
+        android:text="@string/range"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
   
 </RelativeLayout>
