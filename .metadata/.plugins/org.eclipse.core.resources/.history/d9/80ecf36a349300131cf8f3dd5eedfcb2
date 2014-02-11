@@ -13,7 +13,7 @@ public class User {
 		}
 		return false;
 	}
- 
+
 	public static boolean register(String email, String password) {
 		String direktive = "addUser.php";
 		if (WebServerKommunikation.doPostAnfrage(email, password, direktive)) {
