@@ -7,7 +7,7 @@ public class User {
 
 	public static boolean login(String email, String password) {
 		String direktive = "login.php";
-		if (WebServerKommunikation.doPostAnfragen(email, password, direktive)) {
+		if (WebServerKommunikation.doPostAnfrage(email, password, direktive)) {
 			mail = email;
 			return true;
 		}
@@ -16,7 +16,7 @@ public class User {
 
 	public static boolean register(String email, String password) {
 		String direktive = "addUser.php";
-		if (WebServerKommunikation.doPostAnfragen(email, password, direktive)) {
+		if (WebServerKommunikation.doPostAnfrage(email, password, direktive)) {
 			mail = email;
 			return true;
 		}

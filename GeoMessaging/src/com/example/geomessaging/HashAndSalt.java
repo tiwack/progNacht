@@ -9,7 +9,7 @@ public class HashAndSalt {
 	// mehr oder weniger zufaelliger Wert
 	private static String salt = "kjashkajdshjkasdsdfsdfdsjfjsdfhj";
 
-	public static String createMd5(String input) {
+	public static String createMd5Hash(String input) {
 		String md5 = null;
 		if (null == input)
 			return null;
@@ -24,5 +24,4 @@ public class HashAndSalt {
 		}
 		return md5.substring(0, 20);
 	}
-
 }

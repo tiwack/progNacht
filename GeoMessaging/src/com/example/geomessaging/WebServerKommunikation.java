@@ -17,7 +17,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -56,47 +55,40 @@ public class WebServerKommunikation {
 		}
 	}
 
-	public static boolean doPostAnfragen(String email, String password,
-			String direktive){
-		String hash = HashAndSalt.createMd5(password);
+	public static boolean doPostAnfrage(String email, String password,
+			String direktive) {
+		String hash = HashAndSalt.createMd5Hash(password);
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost(WebServerKommunikation.SERVER + direktive);
+		HttpPost httpPost = new HttpPost(WebServerKommunikation.SERVER
+				+ direktive);
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("mail", email));
 		params.add(new BasicNameValuePair("password", hash));
 		try {
-		    httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+			httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
-		    // writing error to Log
-		    e.printStackTrace();
+			// writing error to Log
+			e.printStackTrace();
 		}
-		/*
-		 * Making HTTP Request
-		 */
+		// Making HTTP Request
 		try {
-		    HttpResponse response = httpClient.execute(httpPost);
-		    HttpEntity respEntity = response.getEntity();
-		   
-		    if (respEntity != null) {
-		        // EntityUtils to get the reponse content
-		        String content =  EntityUtils.toString(respEntity);
-		        Log.i("RESPONSE", content);
-		        if(content.contains("e")){
-		        return true;
-		        }
-		    }
-		   
-		   
-		} catch (ClientProtocolException e) {
-		    // writing exception to log
-		    e.printStackTrace();
-		} catch (IOException e) {
-		    // writing exception to log
-		    e.printStackTrace();
-		}
-	
+			HttpResponse response = httpClient.execute(httpPost);
+			HttpEntity respEntity = response.getEntity();
 
-		
+			if (respEntity != null) {
+				// EntityUtils to get the reponse content
+				String content = EntityUtils.toString(respEntity);
+				Log.i("RESPONSE", content);
+				if (content.contains("e")) {
+					return true;
+				}
+			}
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 }
