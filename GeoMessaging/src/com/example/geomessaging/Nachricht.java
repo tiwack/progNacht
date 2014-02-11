@@ -7,8 +7,8 @@ public class Nachricht {
 	private double lati;
 	private String msg;
 
-	public Nachricht( String name, String date, double longi,
-			double lati, String msg) {
+	public Nachricht(String name, String date, double longi, double lati,
+			String msg) {
 		super();
 		this.name = name;
 		this.date = date;
@@ -16,10 +16,6 @@ public class Nachricht {
 		this.lati = lati;
 		this.msg = msg;
 	}
-
-	
-
-	
 
 	public String getName() {
 		return name;
@@ -65,5 +61,4 @@ public class Nachricht {
 	public String toString() {
 		return name + " " + date + "\n " + msg + "\n\n";
 	}
-
 }
