@@ -1,0 +1,6 @@
+package com.example.geomessaging;
+
+public class Snippet {
+	JsonArray nestedArray = jsonObject.get( "items" ).asArray();
+}
+
