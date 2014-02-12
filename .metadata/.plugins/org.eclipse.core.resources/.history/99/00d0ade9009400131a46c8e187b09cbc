@@ -90,8 +90,8 @@ public class MainActivity extends Activity {
 				} else {
 					reichweiteZahl = Integer.parseInt(reichweite);
 				}
-				double positionLat = 10.2;
-				double positionLong = 10.923;
+				double positionLong = 123.923;
+				double positionLat = 234.2;
 				Log.i("Nachricht aufruf mit range", reichweite);
 				text.setText(Nachrichten.getNachrichten(reichweiteZahl,
 						positionLong, positionLat));
@@ -111,8 +111,8 @@ public class MainActivity extends Activity {
 						json.put("name", User.getMail());
 						json.put("date", dateFormat.format(cal.getTime()));
 						json.put("msg", eingabe.getText().toString());
-						json.put("lat", "10.234");
-						json.put("long", "10.34");
+						json.put("lat", "234.234");
+						json.put("long", "123.34");
 						Log.i("Senden Jsonobjekt", json.toString());
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpPost httpPost = new HttpPost(
