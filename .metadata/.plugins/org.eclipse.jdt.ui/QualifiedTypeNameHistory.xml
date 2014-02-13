@@ -28,7 +28,8 @@
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
 <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
 <fullyQualifiedTypeName name="com.example.geomessaging.WebServerKommunikation"/>
-<fullyQualifiedTypeName name="android.location.LocationListener"/>
 <fullyQualifiedTypeName name="android.app.Service"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.location.LocationListener"/>
+<fullyQualifiedTypeName name="android.os.AsyncTask"/>
 </qualifiedTypeNameHistroy>

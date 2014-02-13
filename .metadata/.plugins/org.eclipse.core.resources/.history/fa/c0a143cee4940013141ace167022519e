@@ -99,10 +99,7 @@ public class MainActivity extends Activity implements LocationListener{
 				}
 				double positionLat = location.getLatitude();
 				double positionLong =  location.getLongitude();
-				String bla = String.valueOf(positionLat);
 				Log.i("Nachricht aufruf mit range", reichweite);
-				Log.i("LAT", bla);
-				
 				text.setText(Nachrichten.getNachrichten(reichweiteZahl,
 						positionLong, positionLat));
 			}

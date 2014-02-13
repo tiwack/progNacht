@@ -58,7 +58,7 @@ public class MainActivity extends Activity implements LocationListener{
 			StrictMode.setThreadPolicy(policy);
 		}
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		// buttons felder etc holen
 		button_senden = (Button) findViewById(R.id.button2);
 		button_aktualisieren = (Button) findViewById(R.id.button1);
@@ -97,12 +97,9 @@ public class MainActivity extends Activity implements LocationListener{
 				} else {
 					reichweiteZahl = Integer.parseInt(reichweite);
 				}
-				double positionLat = location.getLatitude();
-				double positionLong =  location.getLongitude();
-				String bla = String.valueOf(positionLat);
+				double positionLat = 1.1;//location.getLatitude();
+				double positionLong =  1.1;//location.getLongitude();
 				Log.i("Nachricht aufruf mit range", reichweite);
-				Log.i("LAT", bla);
-				
 				text.setText(Nachrichten.getNachrichten(reichweiteZahl,
 						positionLong, positionLat));
 			}
