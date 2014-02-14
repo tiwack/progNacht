@@ -59,6 +59,10 @@ public class MainActivity extends Activity implements LocationListener{
 		}
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		Log.i("locaten eingelesen:", location==null?null:location.toString());
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+		
 		// buttons felder etc holen
 		button_senden = (Button) findViewById(R.id.button2);
 		button_aktualisieren = (Button) findViewById(R.id.button1);
