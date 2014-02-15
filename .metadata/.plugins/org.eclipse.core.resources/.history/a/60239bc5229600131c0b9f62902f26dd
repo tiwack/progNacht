@@ -38,7 +38,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity implements LocationListener{
 	private Button button_user;
 	private Button button_senden;
 	private Button button_aktualisieren;
@@ -48,7 +48,6 @@ public class MainActivity extends Activity implements LocationListener {
 	Location location;
 	DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - hh:mm");
 	GPSTracker gps = new GPSTracker(MainActivity.this);
-
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -58,7 +57,8 @@ public class MainActivity extends Activity implements LocationListener {
 					.permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 		}
-
+		
+		
 		// buttons felder etc holen
 		button_senden = (Button) findViewById(R.id.button2);
 		button_aktualisieren = (Button) findViewById(R.id.button1);
@@ -97,10 +97,13 @@ public class MainActivity extends Activity implements LocationListener {
 				} else {
 					reichweiteZahl = Integer.parseInt(reichweite);
 				}
-
+				
 				double positionLat = gps.getLatitude();
-				double positionLong = gps.getLongitude();
+				double positionLong =  gps.getLongitude();
+				String bla = String.valueOf(positionLat);
 				Log.i("Nachricht aufruf mit range", reichweite);
+				Log.i("LAT", bla);
+				
 				text.setText(Nachrichten.getNachrichten(reichweiteZahl,
 						positionLong, positionLat));
 			}
@@ -116,10 +119,9 @@ public class MainActivity extends Activity implements LocationListener {
 					Log.i("Gregorian Calender", cal.toString());
 					try {
 						double positionLat = gps.getLatitude();
-						double positionLong = gps.getLongitude();
+						double positionLong =  gps.getLongitude();
 						String positionLatString = String.valueOf(positionLat);
-						String positionLongString = String
-								.valueOf(positionLong);
+						String positionLongString = String.valueOf(positionLong);
 						JSONObject json = new JSONObject();
 						json.put("name", User.getMail());
 						json.put("date", dateFormat.format(cal.getTime()));
@@ -176,26 +178,23 @@ public class MainActivity extends Activity implements LocationListener {
 		button_aktualisieren.performClick();
 	}
 
-	public void onLocationChanged(Location location) {
-		this.location = location;
-		Log.i("Location", "new Location: " + location);
-	}
+	public void onLocationChanged(Location location) { this.location = location; Log.i("Location", "new Location: "+location); }
 
 	@Override
 	public void onProviderDisabled(String arg0) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onProviderEnabled(String arg0) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
 		// TODO Auto-generated method stub
-
+		
 	}
 }
