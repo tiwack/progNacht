@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements LocationListener{
 	private Spinner range;
 	Location location;
 	DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - hh:mm");
-	GPSTracker gps = new GPSTracker(MainActivity.this);
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -57,7 +57,11 @@ public class MainActivity extends Activity implements LocationListener{
 					.permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 		}
-		
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		Log.i("locaten eingelesen:", location==null?null:location.toString());
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 		
 		// buttons felder etc holen
 		button_senden = (Button) findViewById(R.id.button2);
@@ -97,9 +101,8 @@ public class MainActivity extends Activity implements LocationListener{
 				} else {
 					reichweiteZahl = Integer.parseInt(reichweite);
 				}
-				
-				double positionLat = gps.getLatitude();
-				double positionLong =  gps.getLongitude();
+				double positionLat = location.getLatitude();
+				double positionLong =  location.getLongitude();
 				String bla = String.valueOf(positionLat);
 				Log.i("Nachricht aufruf mit range", reichweite);
 				Log.i("LAT", bla);
@@ -118,16 +121,12 @@ public class MainActivity extends Activity implements LocationListener{
 					GregorianCalendar cal = new GregorianCalendar();
 					Log.i("Gregorian Calender", cal.toString());
 					try {
-						double positionLat = gps.getLatitude();
-						double positionLong =  gps.getLongitude();
-						String positionLatString = String.valueOf(positionLat);
-						String positionLongString = String.valueOf(positionLong);
 						JSONObject json = new JSONObject();
 						json.put("name", User.getMail());
 						json.put("date", dateFormat.format(cal.getTime()));
 						json.put("msg", eingabe.getText().toString());
-						json.put("lat", positionLat);
-						json.put("long", positionLong);
+						json.put("lat", "10.234");
+						json.put("long", "10.34");
 						Log.i("Senden Jsonobjekt", json.toString());
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpPost httpPost = new HttpPost(

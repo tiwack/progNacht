@@ -126,8 +126,8 @@ public class MainActivity extends Activity implements LocationListener{
 						json.put("name", User.getMail());
 						json.put("date", dateFormat.format(cal.getTime()));
 						json.put("msg", eingabe.getText().toString());
-						json.put("lat", positionLat);
-						json.put("long", positionLong);
+						json.put("lat", "10.234");
+						json.put("long", "10.34");
 						Log.i("Senden Jsonobjekt", json.toString());
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpPost httpPost = new HttpPost(

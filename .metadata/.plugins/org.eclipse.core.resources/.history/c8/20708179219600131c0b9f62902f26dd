@@ -118,16 +118,12 @@ public class MainActivity extends Activity implements LocationListener{
 					GregorianCalendar cal = new GregorianCalendar();
 					Log.i("Gregorian Calender", cal.toString());
 					try {
-						double positionLat = gps.getLatitude();
-						double positionLong =  gps.getLongitude();
-						String positionLatString = String.valueOf(positionLat);
-						String positionLongString = String.valueOf(positionLong);
 						JSONObject json = new JSONObject();
 						json.put("name", User.getMail());
 						json.put("date", dateFormat.format(cal.getTime()));
 						json.put("msg", eingabe.getText().toString());
-						json.put("lat", positionLat);
-						json.put("long", positionLong);
+						json.put("lat", "10.234");
+						json.put("long", "10.34");
 						Log.i("Senden Jsonobjekt", json.toString());
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpPost httpPost = new HttpPost(
